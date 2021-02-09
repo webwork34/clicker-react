@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
+import { Context } from "../context";
 
 export const WelcomePage = () => {
   const history = useHistory();
+  const { changePageHandler } = useContext(Context);
 
   const goToGame = (e) => {
     e.preventDefault();
-    history.push("/game");
+    changePageHandler();
     localStorage.setItem("name", e.target[0].value);
+    history.push("/game");
   };
 
   return (
